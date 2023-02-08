@@ -7,6 +7,7 @@ import { getSession } from 'next-auth/react';
 import SignIn from 'components/SignIn'
 import SideBar from 'components/SideBar'
 import FeedComponent from 'components/FeedComponent'
+import RightSide from 'components/RightSide';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,15 +22,11 @@ export default function Home({session}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className=' h-screen bg-gray-100'>
-         <Header/>
-         <div className='flex h-full'>
-            <SideBar/>
-            <FeedComponent/>
-            
-            
-         </div>
-         
+      <Header/>
+      <main className = 'flex  justify-between h-screen bg-gray-100' >
+        <SideBar/>
+        <FeedComponent/>
+        <RightSide/> 
       </main>
     </>
   )

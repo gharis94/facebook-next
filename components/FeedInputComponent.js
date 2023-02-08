@@ -22,8 +22,12 @@ const FeedInputComponent = () => {
         }
 
         reader.onload=(readerEvent)=>{
-            setImageState(readerEvent.target.value)
+            setImageState(readerEvent.target.result)
         }
+    }
+
+    const removeImage =()=>{
+        setImageState(null)
     }
   return (
     <div  className = 'mt-6 bg-white rounded-lg px-4 py-1 drop-shadow-xl ' >
@@ -33,9 +37,9 @@ const FeedInputComponent = () => {
                 <input value={state} onChange={(e)=>setState(e.target.value)} className='bg-gray-100 rounded-full flex-1 pl-2 outline-none' placeholder={`Type here ${user?.name}`}/>
                 <button hidden type='submit'>Submit</button>
             </form>
-            {imageState && <div>
-                <img src={imageState}/>
-                <p>Remove</p>
+            {imageState && <div className='flex flex-col items-center cursor-pointer hover:bg-white' onClick={()=>removeImage()}>
+                <img src={imageState} className='w-10 h-10 object-cover'/>
+                <p className='text-sm text-red-600'>Remove</p>
             </div>}   
         </div>
         <div className='flex justify-around mt-2'>
